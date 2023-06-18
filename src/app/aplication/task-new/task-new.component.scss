@@ -1,0 +1,67 @@
+@import "./../../../styles/colors.scss";
+
+app-task-new {
+  height: 100%;
+  overflow: hidden;
+}
+
+.ContainerNewTask {
+  height: 100%;
+
+  background-image: radial-gradient($LightGray 3%, transparent 11%),
+    radial-gradient($LightBlue 3%, transparent 11%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-repeat: repeat;
+
+  .wrapperNewTasks {
+    height: 100%;
+    width: min(840px, 100%);
+
+    background-color: $White;
+
+    .headerTaskNew {
+      background-color: rgba($LightBlue, 0.2);
+
+      span {
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        img {
+          height: 16px;
+          filter: $BlueFilter;
+        }
+      }
+
+      h4 {
+        font-size: 22px;
+        font-weight: 500;
+        color: $Blue;
+      }
+    }
+  }
+
+  .areaTaskEdit {
+    scrollbar-width: thin;
+    scrollbar-color: transparent $LightGray;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $LightGray;
+      border-radius: 6px;
+    }
+
+    form {
+      width: min(600px, 100%);
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@import "./../../../styles/colors.scss";
+
+app-task-edit {
+  height: 100%;
+  overflow: hidden;
+}
+
+.ContainerEditTask {
+  height: 100%;
+
+  background-image: radial-gradient($LightGray 3%, transparent 11%),
+    radial-gradient($LightBlue 3%, transparent 11%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-repeat: repeat;
+
+  .wrapperEditTasks {
+    height: 100%;
+    width: min(840px, 100%);
+
+    background-color: $White;
+
+    .headerTaskEdit {
+      background-color: rgba($LightBlue, 0.2);
+
+      span {
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        img {
+          height: 16px;
+          filter: $BlueFilter;
+        }
+      }
+
+      h4 {
+        font-size: 22px;
+        font-weight: 500;
+        color: $Blue;
+      }
+    }
+  }
+
+  .toolbarTaskEdit {
+    button {
+      background-color: transparent;
+      min-width: 75px;
+      padding: 0rem !important;
+
+      a {
+        color: $Black;
+      }
+
+      img {
+        width: 14px;
+        filter: $BlueFilter;
+      }
+    }
+  }
+
+  .areaTaskEdit {
+    scrollbar-width: thin;
+    scrollbar-color: transparent $LightGray;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $LightGray;
+      border-radius: 6px;
+    }
+
+    form {
+      width: min(600px, 100%);
+
+      label {
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 500;
+      }
+
+      .inputWrapper {
+        input {
+          box-shadow: none !important;
+        }
+      }
+
+      .withoutErrorMsg {
+        margin-bottom: 21px;
+      }
+
+      .wrapperSMItems {
+        .inputWrapper {
+          width: 140px;
+
+          .input-group,
+          .form-select {
+            width: 128px;
+          }
+        }
+      }
+
+      .phoneWrapper {
+        width: 150px;
+      }
+
+      .AreaMsgErro {
+        display: inline-block;
+        height: 21px;
+
+        p {
+          font-size: 14px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+}

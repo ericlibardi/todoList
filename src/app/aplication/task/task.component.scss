@@ -1,0 +1,118 @@
+@import "./../../../styles/colors.scss";
+
+.WrapperTask {
+  height: 50px;
+
+  .WrapperSelectorTask {
+    .showCheckBox {
+      opacity: 0;
+      animation: showElement 1s 0.5s forwards;
+    }
+
+    .hideCheckBox {
+      animation: hideElement 0.2s 0s forwards;
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    @keyframes showElement {
+      from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes hideElement {
+      from {
+        opacity: 1;
+      }
+    
+      to {
+        opacity: 0;
+      }
+    }
+
+  }
+
+  .priorityIndicator {
+    width: min(10px, 20%);
+    border-radius: 6px 0px 0px 6px;
+
+    &.low {
+      background-color: $Success;
+    }
+    &.medium {
+      background-color: $Warning;
+    }
+    &.high {
+      background-color: $Alert;
+    }
+  }
+
+  .wrapperTitleDescription {
+    h5 {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 0rem;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0rem;
+      white-space: nowrap;
+    }
+  }
+
+  .wrapperDaysLeft {
+    p {
+      &:first-of-type {
+        font-size: 16px;
+      }
+
+      &:last-of-type {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .moreOptionsArea {
+    cursor: pointer;
+
+    button {
+      height: 40px;
+
+      img {
+        width: 14px;
+        filter: $BlueFilter;
+      }
+
+      &::after {
+        content: none;
+      }
+
+      &:hover img {
+        filter: $LightBlueFilter;
+      }
+    }
+  }
+}
+
+.DropDownActions {
+  .dropdown-menu {
+    .dropdown-item {
+      font-size: 12px;
+      color: $Black;
+
+      span img {
+        height: 14px;
+        filter: $BlueFilter;
+      }
+    }
+  }
+}

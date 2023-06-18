@@ -1,0 +1,87 @@
+@import "./../../../styles/colors.scss";
+
+app-task-description {
+  height: 100%;
+}
+
+.ContainerDetailsTask {
+  height: 100%;
+
+  background-image: radial-gradient($LightGray 3%, transparent 11%),
+    radial-gradient($LightBlue 3%, transparent 11%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-repeat: repeat;
+
+  .wrapperDetailsTasks {
+    height: 100%;
+    width: min(840px, 100%);
+
+    background-color: $White;
+
+    .headerTaskDetails {
+      background-color: rgba($LightBlue, 0.2);
+
+      span {
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        img {
+          height: 16px;
+          filter: $BlueFilter;
+        }
+      }
+
+      h4 {
+        font-size: 22px;
+        font-weight: 500;
+        color: $Blue;
+      }
+    }
+  }
+
+  .toolbarTaskDetails {
+    button {
+      background-color: transparent;
+      min-width: 75px;
+      padding: 0rem !important;
+
+      a {
+        color: $Black;
+      }
+
+      img {
+        width: 14px;
+        filter: $BlueFilter;
+      }
+    }
+  }
+
+  .areaTaskDetails {
+    width: min(600px, 100%);
+
+    .wrapperDetalhe {
+      h5 {
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 300;
+      }
+
+      .DateDetail {
+        min-width: 90px;
+      }
+
+      .StatusDetail {
+        width: 80px;
+      }
+    }
+  }
+}

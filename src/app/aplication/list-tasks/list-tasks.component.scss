@@ -1,0 +1,65 @@
+@import "./../../../styles/colors.scss";
+
+app-list-tasks {
+  height: 100%;
+}
+
+.containerList {
+  height: 100%;
+
+  background-image: radial-gradient($LightGray 3%, transparent 11%),
+    radial-gradient($LightBlue 3%, transparent 11%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-repeat: repeat;
+
+  .wrapperList {
+    height: 100%;
+    width: min(840px, 100%);
+
+    background-color: $White;
+
+    .headerTasksList {
+      background-color: rgba($LightBlue, 0.2);
+      position: relative;
+
+      h4 {
+        font-size: 22px;
+        font-weight: 500;
+        color: $Blue;
+      }
+    }
+
+    .iconToolsActivities {
+      right: 1rem;
+      top: calc(50% - 10px);
+      cursor: pointer;
+
+      img {
+        height: 20px;
+        filter: $BlueFilter;
+      }
+
+      &:hover img {
+        filter: $LightBlueFilter;
+      }
+    }
+  }
+
+  .WrapperToolsTask {
+    height: 40px;
+
+    span {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $LightGray;
+      }
+
+      img {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}

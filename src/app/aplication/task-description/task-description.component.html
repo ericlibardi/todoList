@@ -1,0 +1,82 @@
+<div
+  class="ContainerDetailsTask d-flex justify-content-center align-items-center p-3"
+>
+  <div
+    class="wrapperDetailsTasks overflow-hidden shadow border border-secondary-subtle border-2 rounded-4"
+  >
+    <div class="headerTaskDetails position-relative border-bottom py-2">
+      <span class="position-absolute" (click)="returnPreviousPage()"
+        ><img src="./../../../assets/icons/leftArrow.png" alt="Return"
+      /></span>
+
+      <h4 class="text-center mb-0">Task Details</h4>
+    </div>
+
+    <div
+      class="toolbarTaskDetails d-flex align-items-center justify-content-center"
+    >
+      <button
+        class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+        (click)="ChangeStatus()"
+      >
+        <span class="me-2">
+          <img
+            src="./../../../assets/icons/Check-Icon.png"
+            alt="Mark as checked" /></span
+        >{{ Task.completed ? "Open" : "Finish" }}
+      </button>
+      <button
+        class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+      >
+        <a
+          [routerLink]="['/home', Task.id, 'edit']"
+          class="d-flex align-items-center text-decoration-none"
+        >
+          <span class="me-2">
+            <img
+              src="./../../../assets/icons/pencil.png"
+              alt="Edit task" /></span
+          >Edit
+        </a>
+      </button>
+      <button
+        class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+        (click)="DeleteTask()"
+      >
+        <span class="me-2">
+          <img
+            src="./../../../assets/icons/trashcan.png"
+            alt="Delete task" /></span
+        >Delete
+      </button>
+    </div>
+
+    <div class="areaTaskDetails d-flex flex-column mx-auto my-3 px-3">
+      <div class="wrapperDetalhe mb-3">
+        <h5 class="mb-1">Title</h5>
+        <p class="mb-1">{{ Task.title }}</p>
+      </div>
+
+      <div class="wrapperDetalhe mb-3">
+        <h5 class="mb-1">Description</h5>
+        <p class="mb-1">{{ Task.description }}</p>
+      </div>
+
+      <div class="wrapperDetalhe d-flex justify-content-between mb-3">
+        <div class="wrapperSubDetalhe DateDetail">
+          <h5 class="mb-1">Due Date</h5>
+          <p class="mb-1">{{ Task.dueDate | date : "longDate" }}</p>
+        </div>
+        <div class="wrapperSubDetalhe StatusDetail">
+          <h5 class="mb-1">Status</h5>
+          <p class="mb-1">{{ Task.completed ? "Completed" : "Pending" }}</p>
+        </div>
+      </div>
+
+      <div class="wrapperDetalhe mb-3 PriorityDetail">
+        <h5 class="mb-1">Priority</h5>
+        <p class="mb-1">{{ Task.priority }}</p>
+      </div>
+    </div>
+  </div>
+</div>

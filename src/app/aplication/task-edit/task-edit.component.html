@@ -1,0 +1,193 @@
+<div class="ContainerEditTask d-flex justify-content-center p-3">
+    <div
+      class="wrapperEditTasks d-flex flex-column overflow-hidden shadow border border-secondary-subtle border-2 rounded-4"
+    >
+      <div class="headerTaskEdit position-relative border-bottom py-2">
+        <span class="position-absolute" (click)="returnPreviousPage()"
+          ><img src="./../../../assets/icons/leftArrow.png" alt="Return"
+        /></span>
+  
+        <h4 class="text-center mb-0">Edit Task</h4>
+      </div>
+  
+      <div
+        class="toolbarTaskEdit d-flex align-items-center justify-content-center"
+      >
+        <button
+          class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+          (click)="saveChangesTask()"
+        >
+          <span class="me-2">
+            <img
+              src="./../../../assets/icons/save_icon.png"
+              alt="Save changes" /></span
+          >Save
+        </button>
+        <button
+          class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+          (click)="returnPreviousPage()"
+        >
+          <span class="me-2">
+            <img
+              src="./../../../assets/icons/xmark.png"
+              alt="Cancel Changes" /></span
+          >Cancel
+        </button>
+      </div>
+  
+      <div
+        class="areaTaskEdit d-flex flex-column align-items-center overflow-auto mx-auto my-3 px-3 w-100"
+      >
+        <form [formGroup]="editForm" class="d-flex flex-column">
+          <span class="inputWrapper titleWrapper">
+            <label class="form-label mt-2 mb-1" for="titleTask">Title</label>
+            <input
+              type="text"
+              class="form-control form-control-sm mb-1"
+              id="titleTask"
+              placeholder="test@test.com"
+              formControlName="title"
+              required
+              (blur)="InputLostFocus('title')"
+              (focus)="InputGainedFocus('title')"
+            />
+            <span class="AreaMsgErro">
+              <p *ngIf="errorMessages.title.length > 0" class="text-danger mb-0">
+                {{ errorMessages.title }}
+              </p>
+            </span>
+          </span>
+  
+          <span class="inputWrapper descriptionWrapper">
+            <label class="form-label mt-2 mb-1" for="descriptionTask"
+              >Description</label
+            >
+            <textarea
+              class="form-control form-control-sm mb-1"
+              id="descriptionTask"
+              formControlName="description"
+              rows="2"
+              type="text"
+              required
+              (blur)="InputLostFocus('description')"
+              (focus)="InputGainedFocus('description')"
+            ></textarea>
+  
+            <span class="AreaMsgErro">
+              <p
+                *ngIf="errorMessages.description.length > 0"
+                class="text-danger mb-0"
+              >
+                {{ errorMessages.description }}
+              </p>
+            </span>
+          </span>
+  
+          <div class="wrapperSMItems d-flex justify-content-between">
+            <span class="inputWrapper dueDateWrapper">
+              <label class="form-label mt-2 mb-1" for="dueDateTask"
+                >Due Date</label
+              >
+  
+              <div class="input-group">
+                <input
+                  class="form-control form-control-sm"
+                  placeholder="yyyy-mm-dd"
+                  id="dueDateTask"
+                  formControlName="dueDate"
+                  ngbDatepicker
+                  #datePicker="ngbDatepicker"
+                  required
+                  (blur)="InputLostFocus('dueDate')"
+                  (focus)="InputGainedFocus('dueDate')"
+                />
+  
+                <button
+                  class="btn btn-outline-secondary bi bi-calendar3"
+                  (click)="datePicker.toggle()"
+                  type="button"
+                ></button>
+              </div>
+  
+              <span class="AreaMsgErro">
+                <p
+                  *ngIf="errorMessages.dueDate.length > 0"
+                  class="text-danger mb-0"
+                >
+                  {{ errorMessages.dueDate }}
+                </p>
+              </span>
+            </span>
+  
+            <span class="inputWrapper statusWrapper withoutErrorMsg">
+              <label class="form-check-label mt-2 mb-1" for="statusTask"
+                >Completed</label
+              >
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  formControlName="status"
+                  id="statusTask"
+                />
+              </div>
+            </span>
+            <span class="inputWrapper priorityWrapper withoutErrorMsg">
+              <label class="form-label mt-2 mb-1" for="priorityLevelTask"
+                >Priority</label
+              >
+              <select
+                class="form-select form-select-sm"
+                id="priorityLevelTask"
+                formControlName="priority"
+                aria-label="Task Priority selection"
+              >
+                <option *ngFor="let priority of Priorities" [ngValue]="priority">
+                  {{ priority }}
+                </option>
+              </select>
+            </span>
+          </div>
+  
+          <span class="inputWrapper addressWrapper withoutErrorMsg">
+            <label class="form-label mt-2 mb-1" for="addressTask">Address</label>
+            <input
+              type="text"
+              class="form-control form-control-sm mb-1"
+              id="addressTask"
+              placeholder="address"
+              formControlName="address"
+            />
+          </span>
+  
+          <span class="inputWrapper phoneWrapper withoutErrorMsg">
+            <label class="form-label mt-2 mb-1" for="phoneTask"
+              >Phone number</label
+            >
+            <input
+              type="tel"
+              class="form-control form-control-sm mb-1"
+              id="phoneTask"
+              placeholder="0000000"
+              formControlName="phone"
+            />
+          </span>
+  
+          <span class="inputWrapper extrasWrapper">
+            <label class="form-label mt-2 mb-1" for="extraDetailsTask"
+              >Extras</label
+            >
+            <textarea
+              class="form-control form-control-sm mb-1"
+              id="extraDetailsTask"
+              formControlName="extra"
+              rows="2"
+              type="text"
+            ></textarea>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+  

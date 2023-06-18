@@ -1,0 +1,124 @@
+<div
+  class="WrapperTask d-flex justify-content-space-between bg-light rounded m-1 overflow-hidden"
+>
+  <div
+    #collapse="ngbCollapse"
+    [(ngbCollapse)]="isCollapsed"
+    animation="false"
+
+    style="width: 34px"
+  >
+    <div
+      class="WrapperSelectorTask form-check d-flex justify-content-center align-items-center h-100 mb-0"
+      style="width: 24px"
+    >
+      <input
+        #checkboxSelection
+        class="form-check-input"
+        [ngClass]="checkBoxVisible ? 'showCheckBox' : 'hideCheckBox'"
+        type="checkbox"
+        id="flexCheckDefault"
+      />
+    </div>
+  </div>
+
+  <div class="leftwrapper d-flex w-100">
+    <ng-template #tipContent
+      ><b>Priority</b><br />{{ task.priority }}</ng-template
+    >
+
+    <div
+      class="priorityIndicator"
+      [ngClass]="task.priority"
+      [ngbTooltip]="tipContent"
+      placement="right"
+    ></div>
+
+    <div
+      class="wrapperTitleDescription d-flex flex-column justify-content-center mx-2"
+    >
+      <h5>{{ task.title }}</h5>
+
+      <p>{{ task.description }}</p>
+    </div>
+  </div>
+
+  <div class="rightwrapper d-flex align-items-center flex-shrink-0">
+    <div class="wrapperDaysLeft d-flex">
+      <p class="d-flex align-items-center mb-0">{{ DaysLeft }}</p>
+      <p class="d-flex align-items-center mb-0 mx-2">
+        Days <br />
+        Left
+      </p>
+    </div>
+    <span
+      ngbDropdown
+      class="moreOptionsArea flex-shrink-0 px-1 ms-2"
+      container="body"
+      dropdownClass="DropDownActions"
+      placement="bottom-end"
+    >
+      <button
+        type="button"
+        ngbDropdownToggle
+        class="bg-transparent border border-0"
+      >
+        <img
+          src="./../../../assets/icons/ellipsis.png"
+          alt="More Options Icon"
+        />
+      </button>
+      <div
+        ngbDropdownMenu
+        aria-labelledby="dropdownActions"
+        class="py-0"
+        style="--bs-dropdown-min-width: 8rem"
+      >
+        <button
+          ngbDropdownItem
+          class="d-flex align-items-center px-3"
+          (click)="MarkCompleted()"
+        >
+          <span class="me-2">
+            <img
+              src="./../../../assets/icons/Check-Icon.png"
+              alt="Mark as checked"
+          /></span>
+          Completed
+        </button>
+        <button
+          ngbDropdownItem
+          class="d-flex align-items-center px-3"
+          (click)="OpenDetails()"
+        >
+          <span class="me-2">
+            <img
+              src="./../../../assets/icons/details.png"
+              alt="Mark as checked"
+          /></span>
+          Details
+        </button>
+        <button
+          ngbDropdownItem
+          class="d-flex align-items-center px-3"
+          (click)="OpenEditMode()"
+        >
+          <span class="me-2">
+            <img src="./../../../assets/icons/pencil.png" alt="Edit task"
+          /></span>
+          Edit
+        </button>
+        <button
+          ngbDropdownItem
+          class="d-flex align-items-center px-3"
+          (click)="DeleteTask()"
+        >
+          <span class="me-2">
+            <img src="./../../../assets/icons/trashcan.png" alt="Delete task"
+          /></span>
+          Delete
+        </button>
+      </div>
+    </span>
+  </div>
+</div>

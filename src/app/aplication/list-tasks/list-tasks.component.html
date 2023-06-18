@@ -1,0 +1,68 @@
+<div class="containerList d-flex justify-content-center align-items-center p-3">
+  <div
+    class="wrapperList overflow-hidden shadow border border-secondary-subtle border-2 rounded-4"
+  >
+    <div class="headerTasksList border-bottom py-2">
+      <h4 class="text-center mb-0">To-do activities</h4>
+
+      <span
+        class="iconToolsActivities position-absolute"
+        (click)="OpenSelectOption()"
+        [attr.aria-expanded]="!TasksState.toolbarIsCollapsed"
+        aria-controls="collapseToolbar"
+      >
+        <img
+          src="../../../assets/icons/tools_icon.png"
+          alt="open tools option"
+        />
+      </span>
+    </div>
+
+    <div
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="TasksState.toolbarIsCollapsed"
+    >
+      <div class="WrapperToolsTask d-flex justify-content-center mt-1">
+        <span
+          class="d-flex align-items-center rounded-2 px-2 py-1 m-1"
+          (click)="CreateNewTask()"
+        >
+          <img
+            src="../../../assets/icons/plus_circle.png"
+            alt="add new item"
+            class="me-2"
+          />
+          <p class="mb-0">New Task</p>
+        </span>
+
+        <span
+          class="d-flex align-items-center rounded-2 px-2 py-1 m-1"
+          (click)="MarkSelectedTasksCompleted()"
+        >
+          <img
+            src="../../../assets/icons/Check-Icon.png"
+            alt="mark as completed"
+            class="me-2"
+          />
+          <p class="mb-0">Complete</p>
+        </span>
+
+        <span
+          class="d-flex align-items-center rounded-2 px-2 py-1 m-1"
+          (click)="DeleteSelectedTasks()"
+        >
+          <img
+            src="../../../assets/icons/trashcan.png"
+            alt="delete item"
+            class="me-2"
+          />
+          <p class="mb-0">Delete</p>
+        </span>
+      </div>
+    </div>
+
+    <div *ngFor="let task of Tasks">
+      <app-task #taskOption [task]="task" [isCollapsed]="true"> </app-task>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@import "./../../../styles/colors.scss";
+
+.containerLogin {
+  height: 100vh;
+
+  background-image: url('./../../../assets/images/backgroundImage.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+
+  .wrapperFormulario {
+    height: min(450px, 100%);
+    width: min(350px, 100%);
+
+    form {
+      width: min(300px, 100%);
+
+      .AreaMsgErro {
+        height: 12px;
+        p {
+            font-size: 12px;
+            line-height: 12px;
+        }
+      }
+
+      button {
+        height: 32px;
+        line-height: 14px;
+        border-radius: 1.5rem;
+        background-color: $Blue;
+        color: $White;
+        width: 100%;
+        border: unset;
+
+        &:disabled {
+          background-color: $LightBlue;
+        }
+      }
+    }
+  }
+}

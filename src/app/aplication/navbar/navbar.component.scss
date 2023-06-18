@@ -1,0 +1,11 @@
+@import "src/styles/colors.scss";
+
+#navBar {
+    height: 55px;
+    padding: 0px 24px;
+    background-color: rgba($LightBlue, 0.3);
+
+    img {
+        height: 100%;
+    }
+}
