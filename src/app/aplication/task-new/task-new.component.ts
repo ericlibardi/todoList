@@ -3,6 +3,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Task } from '../shared/interface';
+import { TasksService } from '../services/tasks.service';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-task-new',
@@ -20,7 +22,7 @@ export class TaskNewComponent {
       Validators.required,
       Validators.minLength(10),
     ]),
-    dueDate: new FormControl('', [Validators.required]),
+    dueDate: new FormControl(undefined, [Validators.required]),
     status: new FormControl(false, [Validators.required]),
     priority: new FormControl(this.Priorities[0], [Validators.required]),
     address: new FormControl(''),
@@ -35,13 +37,61 @@ export class TaskNewComponent {
     priority: '',
   };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private tasksService: TasksService
+  ) {}
 
   /** Navigate to the previous page according to the browser history
    */
   returnPreviousPage() {
     try {
       history.back();
+    } catch (error) {}
+  }
+
+  /** Save the updates made into the Task
+   */
+  saveNewTask() {
+    try {
+      // Verify whether the form is valid
+      const formIsValid = this.newForm.valid;
+      if (!formIsValid) {
+        const controlList = Object.keys(this.newForm.controls);
+
+        controlList.forEach((controlName: string) => {
+          this.InputLostFocus(controlName);
+        });
+
+        return;
+      }
+
+      // Get the updated due Date formated as Date
+      const dueDate = new Date(
+        (this.newForm.value.dueDate! as NgbDateStruct).year!,
+        (this.newForm.value.dueDate! as NgbDateStruct).month!,
+        (this.newForm.value.dueDate! as NgbDateStruct).day!
+      );
+
+      const newTaskId = this.tasksService.getLastId() + 1;
+
+      // Set a Task Object with the updated details
+      const taskCreated: Task = {
+        id: newTaskId,
+        title: this.newForm.value.title as string,
+        description: this.newForm.value.description as string,
+        dueDate: dueDate,
+        priority: this.newForm.value.priority?.toLowerCase() as any,
+        completed: this.newForm.value.status as boolean,
+      };
+
+      // Pass the updated task into the Service
+      this.tasksService.createNewTask(taskCreated);
+
+      // Navigate back
+      setTimeout(() => {
+        history.back();
+      }, 100);
     } catch (error) {}
   }
 

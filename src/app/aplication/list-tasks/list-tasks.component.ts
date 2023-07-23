@@ -27,6 +27,7 @@ export class ListTasksComponent implements OnInit, OnDestroy {
 
   public TasksState = {
     toolbarIsCollapsed: true,
+    viewCompletedTasks: false,
   };
 
   private SubscriptionTasks!: Subscription;
@@ -100,7 +101,7 @@ export class ListTasksComponent implements OnInit, OnDestroy {
    */
   public MarkSelectedTasksCompleted() {
     try {
-      const IdsList: string[] = [];
+      const IdsList: number[] = [];
 
       this.taskOption._results.forEach((taskComp: any) => {
         // If task has checkbox Selected
@@ -128,7 +129,7 @@ export class ListTasksComponent implements OnInit, OnDestroy {
    */
   public DeleteSelectedTasks() {
     try {
-      const IdsList: string[] = [];
+      const IdsList: number[] = [];
 
       // Iterate over all Tasks Components
       this.taskOption._results.forEach((taskComp: any) => {

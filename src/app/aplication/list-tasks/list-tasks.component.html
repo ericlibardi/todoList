@@ -3,13 +3,17 @@
     class="wrapperList overflow-hidden shadow border border-secondary-subtle border-2 rounded-4"
   >
     <div class="headerTasksList border-bottom py-2">
+      <span class="AreaBotaoVisao">Pending Tasks</span>
+
       <h4 class="text-center mb-0">To-do activities</h4>
 
       <span
-        class="iconToolsActivities position-absolute"
+        class="iconToolsActivities position-absolute d-flex"
         (click)="OpenSelectOption()"
         [attr.aria-expanded]="!TasksState.toolbarIsCollapsed"
         aria-controls="collapseToolbar"
+        ngbTooltip="Tools"
+        [openDelay]="300"
       >
         <img
           src="../../../assets/icons/tools_icon.png"

@@ -43,7 +43,24 @@ app-task-new {
     }
   }
 
-  .areaTaskEdit {
+  .toolbarTaskNew {
+    button {
+      background-color: transparent;
+      min-width: 75px;
+      padding: 0rem !important;
+
+      a {
+        color: $Black;
+      }
+
+      img {
+        width: 14px;
+        filter: $BlueFilter;
+      }
+    }
+  }
+
+  .areaTaskNew {
     scrollbar-width: thin;
     scrollbar-color: transparent $LightGray;
 

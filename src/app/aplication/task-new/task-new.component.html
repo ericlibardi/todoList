@@ -11,7 +11,32 @@
     </div>
 
     <div
-      class="areaTaskEdit d-flex flex-column align-items-center overflow-auto mx-auto my-3 px-3 w-100"
+      class="toolbarTaskNew d-flex align-items-center justify-content-center"
+    >
+      <button
+        class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+        (click)="saveNewTask()"
+      >
+        <span class="me-2">
+          <img
+            src="./../../../assets/icons/save_icon.png"
+            alt="Save changes" /></span
+        >Save
+      </button>
+      <button
+        class="d-flex align-items-center justify-content-center border border-0 px-3 m-2"
+        (click)="returnPreviousPage()"
+      >
+        <span class="me-2">
+          <img
+            src="./../../../assets/icons/xmark.png"
+            alt="Cancel Changes" /></span
+        >Cancel
+      </button>
+    </div>
+
+    <div
+      class="areaTaskNew d-flex flex-column align-items-center overflow-auto mx-auto my-3 px-3 w-100"
     >
       <form [formGroup]="newForm" class="d-flex flex-column">
         <span class="inputWrapper titleWrapper">
@@ -20,7 +45,6 @@
             type="text"
             class="form-control form-control-sm mb-1"
             id="titleTask"
-            placeholder="test@test.com"
             formControlName="title"
             required
             (blur)="InputLostFocus('title')"

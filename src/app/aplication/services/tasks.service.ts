@@ -11,15 +11,15 @@ export class TasksService {
 
   private TaskList: Task[] = [
     {
-      id: 'sa120fd',
+      id: 1,
       title: 'Bake a Cake',
       description: 'Bake a delicious cake for Katy´s birthday',
-      dueDate: new Date(2023, 6, 4),
+      dueDate: new Date(2023, 7, 30),
       priority: 'medium',
       completed: false,
     },
     {
-      id: 'gjf39gf0',
+      id: 2,
       title: 'Meeting with John',
       description: 'Meeting to discuss about the new application',
       dueDate: new Date(2023, 9, 10),
@@ -27,15 +27,15 @@ export class TasksService {
       completed: false,
     },
     {
-      id: 'fk3jr40',
+      id: 3,
       title: 'Schedule Dentist Appointment',
       description: 'Schedule an appointment with Dr. Karl to check a pain.',
-      dueDate: new Date(2023, 8, 20),
+      dueDate: new Date(2023, 9, 20),
       priority: 'high',
       completed: false,
     },
     {
-      id: 'fj390f',
+      id: 4,
       title: 'Take the dog to the Vet',
       description: 'Take the dog for a complete check-up',
       dueDate: new Date(2023, 11, 2),
@@ -43,23 +43,23 @@ export class TasksService {
       completed: false,
     },
     {
-      id: 'vjfd92',
+      id: 5,
       title: 'Fix the car',
       description: 'Take my car to the mechanic to check the break light',
-      dueDate: new Date(2023, 8, 1),
+      dueDate: new Date(2023, 8, 10),
       priority: 'medium',
       completed: false,
     },
     {
-      id: 'gh28shd',
+      id: 6,
       title: 'Create presentation',
       description: 'Create a ppt presentation for work',
-      dueDate: new Date(2023, 6, 15),
+      dueDate: new Date(2023, 9, 15),
       priority: 'low',
       completed: false,
     },
     {
-      id: 'fj010f',
+      id: 7,
       title: 'Fix the computer',
       description: 'Bring the computer to the technician',
       dueDate: new Date(2023, 10, 18),
@@ -77,18 +77,34 @@ export class TasksService {
     return this.TaskList.slice();
   }
 
+  getLastId(): number {
+    return this.TaskList[this.TaskList.length - 1].id;
+  }
+
   /** Provide the desired task
    * @param id - id of the Task searched
    * @returns - Task found
    */
-  getTask(id: string): Task | undefined {
+  getTask(id: number): Task | undefined {
     return this.TaskList.find((task: Task) => task.id == id);
+  }
+
+
+  /** Insert new task into the Task list
+   * @param task - new task created
+   */
+  createNewTask(task: Task) {
+    try {
+      this.TaskList.push(task);
+
+      this.TasksChanged.next(this.TaskList.slice());
+    } catch (error) {}
   }
 
   /** Change the current status of a specific task
    * @param id - Id of the task in order to change
    */
-  changeTaskStatus(id: string) {
+  changeTaskStatus(id: number) {
     try {
       // Task found on the list that corresponds the ID informed
       const TaskFound = this.TaskList.find((task: Task) => task.id == id);
@@ -105,9 +121,9 @@ export class TasksService {
   /** Change the current status of a list of tasks
    * @param ids - List of Ids of tasks in order to change
    */
-  changeTasksStatus(ids: string[]) {
+  changeTasksStatus(ids: number[]) {
     try {
-      ids.forEach((id: string) => {
+      ids.forEach((id: number) => {
         // Task found on the list that corresponds the ID informed
         const TaskFound = this.TaskList.find((task: Task) => task.id == id);
         if (!TaskFound) return;
@@ -147,7 +163,7 @@ export class TasksService {
   /** Delete the Task passed
    * @param id - id of the Task that must be deleted
    */
-  deleteTask(id: string) {
+  deleteTask(id: number) {
     // Task found based on the Id of the task passed as a paramether
     const TaskFound = this.TaskList.indexOf(
       this.TaskList.find((task: Task) => task.id == id) as Task
@@ -160,9 +176,9 @@ export class TasksService {
     this.TasksChanged.next(this.TaskList.slice());
   }
 
-  deleteTasks(ids: string[]) {
+  deleteTasks(ids: number[]) {
     try {
-      ids.forEach((id: string) => {
+      ids.forEach((id: number) => {
         // Task found based on the Id of the task passed as a paramether
         const TaskFound = this.TaskList.indexOf(
           this.TaskList.find((task: Task) => task.id == id) as Task
